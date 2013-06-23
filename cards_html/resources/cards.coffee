@@ -1,14 +1,17 @@
 # some basic settings
+
 margin = 30
 width = window.innerWidth - 2 * margin
 height = window.innerHeight - 2 * margin
 animationSpeed = 300
 
-# colors in random order
-colors = ['#ff695a', '#f9a77c', '#579092', '#3695d8', '#d998a6', 
-          '#dc4537', '#fff280', '#94c59c', '#3b5065', '#b75468']
-colors.sort -> 0.5 - Math.random()
 
+# colors in random order
+
+colors = [
+  '#ff695a', '#f9a77c', '#579092', '#3695d8', '#d998a6', 
+  '#dc4537', '#fff280', '#94c59c', '#3b5065', '#b75468'
+].sort -> 0.5 - Math.random()
 
 
 # create a view class for cards
@@ -29,15 +32,14 @@ class CardView
     @$el.css stackedStyles()
 
 
-
-# create some functions to generate css transforms, update z indices of cards
+# some functions to generate css transforms, update z indices of cards
 
 stackedStyles = ->
   'opacity': '1.0'
   '-webkit-transform': "rotateY(0rad) rotateZ(0rad) translateX(0px) translateY(0px) translateZ(-100px)"
   '-webkit-perspective': '0'
 
-window.removedStyles = ->
+removedStyles = ->
   direction = Math.random() - 0.5
 
   rotateY = Math.PI / 4
@@ -49,23 +51,25 @@ window.removedStyles = ->
   '-webkit-transform': "rotateY(#{rotateY}rad) rotateZ(#{rotateZ}rad) translateX(#{translateX}px) translateY(#{translateY}px) translateZ(0px)"
   '-webkit-perspective': '500'
 
-window.restack = ->
+restack = ->
   view.$el.css('z-index', i, '-webkit-transform': 'none') for view, i in cardViews
 
 
 
 # create card views and append to body
 
-window.cardViews = for color in colors
+cardViews = for color in colors
   cardView = new CardView(color)
   document.body.appendChild cardView.el
   cardView
 
 
 
-animating = false
+# handle swipes
+# on a left swipe, animate the top card out and move to the bottom
+# on a right swipe, move the bottom card to top and animate in
 
-# on a left swipe, animate a card out
+animating = false
 
 $(window).on 'swipeLeft', ->  
   return if animating
@@ -78,9 +82,6 @@ $(window).on 'swipeLeft', ->
     animating = false
     cardView.$el.css stackedStyles()
     restack()
-
-
-# on a right swipe, animate a card in
 
 $(window).on 'swipeRight', ->
   return if animating
