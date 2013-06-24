@@ -2,8 +2,8 @@ Ruby Motion native vs HTML Comparison
 ==========================================
 
 This includes html and native versions of two simple apps in ruby motion - written for me to compare the 
-code required and performance cost of doing some simple things natively in ruby motion vs in javascript
-included in a UIWebView.
+code required and performance cost to do some simple things natively in ruby motion vs in javascript
+inside a UIWebView.
 
 The first app swipes cards on and off a stack with a 3d transform.  
 Compare `/cards_html/resources/cards.coffee` to `/cards_native/app/card_swiping_controller.rb`.
