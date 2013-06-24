@@ -1,5 +1,5 @@
-Ruby Motion native vs HTML Comparison
-==========================================
+RubyMotion native vs HTML Comparison
+====================================
 
 This includes html and native versions of two simple apps in ruby motion - written for me to compare the 
 code required and performance cost to do some simple things natively in ruby motion vs in javascript
