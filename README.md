@@ -6,9 +6,9 @@ code required and performance cost of doing some simple things natively in ruby 
 included in a UIWebView.
 
 The first app swipes cards on and off a stack with a 3d transform.  
-The relevant files are `/cards_html/resources/cards.coffee` and `/cards_native/app/card_swiping_controller.rb`.
+Compare `/cards_html/resources/cards.coffee` to `/cards_native/app/card_swiping_controller.rb`.
 
 The second app scrolls through a long grid of content.  
-Relevant files are `/grid_html/resources/grid.coffee` and `/grid_native/app/grid_scrolling_controller.rb`.
+Compare `/grid_html/resources/grid.coffee` to `/grid_native/app/grid_scrolling_controller.rb`.
 
 To run one of the apps, with ruby motion installed, `rake` from its root directory
