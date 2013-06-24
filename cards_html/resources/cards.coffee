@@ -89,6 +89,7 @@ $(window).on 'swipeRight', ->
 
   cardView = cardViews.shift()
   cardViews.push cardView
+  
   cardView.$el.css removedStyles()
   restack()
 
