@@ -82,7 +82,7 @@ class CardSwipingController < UIViewController
     # pre-apply transform and update z index of card views
     self.view.bringSubviewToFront card_view
     card_view.layer.transform += removed_transform
-    card_view.alpha = 0.75
+    card_view.alpha = 0.5
 
     UIView.animateWithDuration(@animation_speed,
       
